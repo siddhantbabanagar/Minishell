@@ -28,38 +28,6 @@ We don’t build MiniShell for daily use — we build it to learn how Linux actu
 - Signal Handling
 - Pipes (IPC)
 
-## How the Code Works?
-        ┌──────────────┐
-        │  User Input  │
-        └──────┬───────┘
-               ↓
-        ┌──────────────┐
-        │   Parsing    │
-        └──────┬───────┘
-               ↓
-     ┌────────────────────┐
-     │ Built-in Command? │
-     └──────┬───────┬─────┘
-            │YES    │NO
-            ↓       ↓
-   ┌────────────┐   ┌────────────┐
-   │ Execute    │   │   fork()   │
-   │ Directly   │   └────┬───────┘
-   └────────────┘        ↓
-                   ┌────────────┐
-                   │  Child     │
-                   │ execvp()   │
-                   └────┬───────┘
-                        ↓
-                   ┌────────────┐
-                   │  Parent    │
-                   │  wait()    │
-                   └────┬───────┘
-                        ↓
-                 ┌──────────────┐
-                 │ Show Prompt  │
-                 └──────────────┘
-
 ## Key Learnings
 
 - Learned how fork() and exec() work together
