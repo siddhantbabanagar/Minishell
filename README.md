@@ -1,5 +1,15 @@
 # Minishell
-Implement a minimalistic shell, mini-shell(msh) as part of the Linux Internal module.
+## What is Minishell?
+
+A MiniShell (msh) is a simplified version of a Linux command-line shell (like Bash).
+It is a program written in C that:
+-Takes commands from the user
+-Executes them using system calls
+-Displays the output
+
+## Why Do We Use MiniShell?
+
+We don’t build MiniShell for daily use — we build it to learn how Linux actually works internally.
 
 ## Features
 
@@ -17,6 +27,38 @@ Implement a minimalistic shell, mini-shell(msh) as part of the Linux Internal mo
 - Process Management
 - Signal Handling
 - Pipes (IPC)
+
+## How the Code Works?
+        ┌──────────────┐
+        │  User Input  │
+        └──────┬───────┘
+               ↓
+        ┌──────────────┐
+        │   Parsing    │
+        └──────┬───────┘
+               ↓
+     ┌────────────────────┐
+     │ Built-in Command? │
+     └──────┬───────┬─────┘
+            │YES    │NO
+            ↓       ↓
+   ┌────────────┐   ┌────────────┐
+   │ Execute    │   │   fork()   │
+   │ Directly   │   └────┬───────┘
+   └────────────┘        ↓
+                   ┌────────────┐
+                   │  Child     │
+                   │ execvp()   │
+                   └────┬───────┘
+                        ↓
+                   ┌────────────┐
+                   │  Parent    │
+                   │  wait()    │
+                   └────┬───────┘
+                        ↓
+                 ┌──────────────┐
+                 │ Show Prompt  │
+                 └──────────────┘
 
 ## Key Learnings
 
