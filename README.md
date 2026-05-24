@@ -46,6 +46,12 @@ We don’t build MiniShell for daily use — we build it to learn how Linux actu
 - Auto-complete
 - Better UI
 
+## 👨‍💻 Author
+
+**Siddhant Babanagar**
+🎓 Electronics & Telecommunication Engineer (2025)
+💡 Interested in Embedded Systems & Low-Level Programming
+
 ## How to Run
 
 ```bash
